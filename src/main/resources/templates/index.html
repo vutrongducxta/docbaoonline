@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{masterLayout :: dashboard(
+                                                ~{::title},
+                                                ~{:: #otherStaticResources},
+                                                ~{:: #main}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <th:block id="otherStaticResources">
+    </th:block>
+</head>
+<body>
+
+<div class="blogs" id="main">
+    <div class="new" th:each="neww : ${news}">
+        <a th:href="@{'/category'+${neww.categoryId}+'/'+${neww.id}}">
+            <img th:src="${neww.image}" alt="ảnh">
+            <div class="new__info">
+                <div class="new__infoTitle" th:text="${neww.title}">
+                </div>
+                <div class="new__infoTime" th:text="${neww.dateUpdate}"></div>
+                <div class="new__infoContent" th:text="${neww.content}">
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="pagination" th:if="${totalPage >1}">
+        <div style="display:flex;">
+            <a th:if="${currentPage!=1}" th:href="@{'/page'+${currentPage - 1}}">«</a>
+            <div  th:each="i:${#numbers.sequence(1,totalPage)}">
+                <a th:if="${currentPage!=i}" th:href="@{'/page'+${i}}">[[${i}]]</a>
+                <a th:if="${currentPage==i}" th:href="@{'/page'+${i}}" class="active">[[${i}]]</a>
+            </div>
+            <a th:if="${currentPage!=totalPage}" th:href="@{'/page'+${currentPage + 1}}">»</a>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

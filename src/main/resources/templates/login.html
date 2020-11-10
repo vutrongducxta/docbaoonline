@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese"
+          rel="stylesheet">
+</head>
+<body>
+<div class="main">
+    <div class="main-w3l">
+        <h1 class="logo-w3">Đăng nhập</h1>
+        <div class="w3layouts-main">
+            <form th:action="@{/login}" th:object="${user}" method="post">
+                <p th:if="${param.usernameIncorrect}" style="color:green; margin-left:15px;line-height: 2;">Tài khoản
+                    không tồn
+                    tại!</p>
+                <p th:if="${param.passwordIncorrect}" style="color:green; margin-left:15px;line-height: 2;">Mật khẩu
+                    không đúng!</p>
+                <p th:if="${param.logout}" style="color:green; margin-left:15px;line-height: 2;">Bạn đã đăng xuất!</p>
+                <input placeholder="Tài khoản" name="username" type="text" required="">
+                <input placeholder="Mật khẩu" name="password" type="password" required="">
+                <input type="submit" value="Đăng nhập" name="login">
+            </form>
+            <h6><a th:href="@{/regist}">Đăng ký</a></h6>
+        </div>
+    </div>
+</div>
+</body>
+</html>

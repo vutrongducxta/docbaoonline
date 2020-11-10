@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="header" th:fragment="header">
+    <div class="container">
+        <a th:href="@{/}">
+            <div class="header__logo">
+                <img src="https://i.imgur.com/IYF1RBt.png" alt=""/>
+                ĐọcBáoOnline
+            </div>
+        </a>
+        <div class="header__right">
+            <a th:if="!${session.username}" href="/login">
+                <button type="button" class="btn btn-outline-primary">
+                    Đăng nhập / Đăng ký
+                </button>
+            </a>
+            <a th:if="${session.username}" th:href="@{/logout}">
+                <button type="button" class="btn btn-outline-primary" th:text="${session.username}">
+
+                </button>
+            </a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{masterLayout :: dashboard(
+                                                ~{::title},
+                                                ~{:: #otherStaticResources},
+                                                ~{:: #main}
+                                               )}">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <th:block id="otherStaticResources">
+    </th:block>
+</head>
+<body>
+<div class="newDetail" id="main">
+    <h1 className="newTitle" >
+        <div th:text="${neww.title}"></div>
+        <span className="newDetail__Time" th:text="${neww.dateUpdate}"></span>
+    </h1>
+
+    <img th:src="${neww.image}" alt="" />
+    <div className="newDetail__Content" th:text="${neww.post}">
+    </div>
+</div>
+
+</body>
+</html>
